@@ -4,7 +4,6 @@ const {
 } = require('../controllers/users');
 const { userInfoEditValidation } = require('../middlewares/validation');
 
-
 router.get('/me', getCurrentUserInfo);
 
 router.patch('/me', userInfoEditValidation, patchUserInfo);

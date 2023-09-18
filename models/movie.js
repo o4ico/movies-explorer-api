@@ -16,7 +16,7 @@ const movieSchema = new mongoose.Schema({
     validate: {
       validator: (v) => validator.isURL(v),
       message: 'Некорректный URL',
-    }
+    },
   },
   country: {
     type: String,
@@ -44,7 +44,7 @@ const movieSchema = new mongoose.Schema({
     validate: {
       validator: (v) => validator.isURL(v),
       message: 'Некорректный URL',
-    }
+    },
   },
   trailerLink: {
     type: String,
@@ -62,7 +62,7 @@ const movieSchema = new mongoose.Schema({
   movieId: {
     type: Number,
     required: true,
-  }
+  },
 }, { versionKey: false });
 
 module.exports = mongoose.model('movie', movieSchema);

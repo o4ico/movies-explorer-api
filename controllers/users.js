@@ -80,6 +80,13 @@ module.exports.login = (req, res, next) => {
     .catch(() => next(new UnauthorizedError('Ошибка авторизации')));
 };
 
+module.exports.userLogout = (req, res, next) => res.clearCookie('jwt', {
+  httpOnly: true,
+})
+  .send({ massage: 'выполнен выход' })
+
+  .catch((err) => next(err));
+
 module.exports.getCurrentUserInfo = (req, res, next) => {
   const { _id } = req.user;
   User.findById(req.user._id)

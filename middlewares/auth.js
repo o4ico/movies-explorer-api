@@ -5,11 +5,11 @@ const { SECRET_KEY } = process.env;
 
 module.exports = (req, res, next) => {
   try {
-    if (!req.headers.authorization) {
+    if (!req.cookies.jwt) {
       return next(new UnauthorizedError('Необходима авторизация'));
     }
 
-    const token = req.headers.authorization;
+    const token = req.cookies.jwt;
     let payload;
 
     try {
