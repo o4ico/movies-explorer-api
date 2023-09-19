@@ -54,6 +54,8 @@ module.exports.patchUserInfo = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
         return next(new BadRequestError('Переданы некорректные данные при обновлении профиля'));
+      } if (err.code === 11000) {
+        return next(new ConflictError('Пользователь с этим email уже существует'));
       }
       return next(err);
     });
