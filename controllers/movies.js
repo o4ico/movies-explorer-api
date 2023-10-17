@@ -59,7 +59,7 @@ module.exports.deleteSavedMovie = (req, res, next) => {
       }
       return movie.deleteOne()
 
-        .then(() => res.send({ message: 'Фильм удален!' }));
+        .then(() => res.send(movie));
     })
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {

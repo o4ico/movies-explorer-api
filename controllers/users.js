@@ -76,18 +76,11 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
       })
-        .send({ token, email });
+        .send({ token });
     })
 
     .catch(() => next(new UnauthorizedError('Ошибка авторизации')));
 };
-
-module.exports.userLogout = (req, res, next) => res.clearCookie('jwt', {
-  httpOnly: true,
-})
-  .send({ massage: 'выполнен выход' })
-
-  .catch((err) => next(err));
 
 module.exports.getCurrentUserInfo = (req, res, next) => {
   const { _id } = req.user;
